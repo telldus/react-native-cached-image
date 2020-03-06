@@ -84,11 +84,11 @@ class CachedImage extends React.Component {
         this._isMounted = false;
     }
 
-    componentWillReceiveProps(nextProps) {
-        if (!_.isEqual(this.props.source, nextProps.source)) {
-            this.processSource(nextProps.source);
+    componentDidUpdate(prevProps: Object, prevState: Object) {
+		if (!_.isEqual(prevProps.source, this.props.source)) {
+            this.processSource(this.props.source);
         }
-    }
+	}
 
     setNativeProps(nativeProps) {
         try {
