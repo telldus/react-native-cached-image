@@ -11,6 +11,10 @@
     "globals": {
       "NODE_ENV": "test"
     },
+    "transform": {
+      "^.+\\.jsx$": "babel-jest",
+      "^.+\\.js$": "<rootDir>/node_modules/react-native/jest/preprocessor.js"
+    },
     "testPathIgnorePatterns": [
       "/node_modules/",
       "/CachedImageExample/"
@@ -55,14 +59,15 @@
     "url-parse": "^1.4.7"
   },
   "devDependencies": {
-    "babel-jest": "^21.0.2",
+    "babel-jest": "^24.9.0",
     "babel-preset-env": "*",
-    "babel-preset-react-native": "^3.0.2",
-    "jest": "^21.0.2",
+    "babel-preset-react-native": "^4.0.1",
+    "jest": "^24.9.0",
     "jest-react-native": "^18.0.0",
-    "react": "16.0.0-alpha.12",
-    "react-native": "^0.48.3",
-    "react-test-renderer": "^15.6.1",
-    "regenerator-runtime": "^0.11.0"
+    "metro-react-native-babel-preset": "^0.58.0",
+    "react": "16.9.0",
+    "react-native": "^0.61.5",
+    "react-test-renderer": "^16.9.0",
+    "regenerator-runtime": "^0.13.3"
   }
 }
