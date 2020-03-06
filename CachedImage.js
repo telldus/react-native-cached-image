@@ -67,12 +67,7 @@ class CachedImage extends React.Component {
             cachedImagePath: null,
         };
 
-        this.getImageCacheManagerOptions = this.getImageCacheManagerOptions.bind(this);
         this.getImageCacheManager = this.getImageCacheManager.bind(this);
-        this.safeSetState = this.safeSetState.bind(this);
-        this.handleConnectivityChange = this.handleConnectivityChange.bind(this);
-        this.processSource = this.processSource.bind(this);
-        this.renderLoader = this.renderLoader.bind(this);
     }
 
     componentDidMount() {
@@ -98,7 +93,7 @@ class CachedImage extends React.Component {
         }
     }
 
-    getImageCacheManagerOptions() {
+    getImageCacheManagerOptions = () => {
         return _.pick(this.props, _.keys(ImageCacheManagerOptionsPropTypes));
     }
 
@@ -112,14 +107,14 @@ class CachedImage extends React.Component {
         return ImageCacheManager(options);
     }
 
-    safeSetState(newState) {
+    safeSetState = (newState) => {
         if (!this._isMounted) {
             return;
         }
         return this.setState(newState);
     }
 
-    processSource(source) {
+    processSource = (source) => {
         const url = _.get(source, ['uri'], null);
         const options = this.getImageCacheManagerOptions();
         const imageCacheManager = this.getImageCacheManager();
@@ -164,7 +159,7 @@ class CachedImage extends React.Component {
         });
     }
 
-    renderLoader() {
+    renderLoader = () => {
         const imageProps = getImageProps(this.props);
         const imageStyle = [this.props.style, styles.loaderPlaceholder];
 
