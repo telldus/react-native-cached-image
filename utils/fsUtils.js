@@ -2,10 +2,11 @@
 
 const _ = require('lodash');
 
-const RNFetchBlob = require('react-native-fetch-blob').default;
+import RNFetchBlob from 'rn-fetch-blob';
 
 const {
-    fs
+    fs,
+    config,
 } = RNFetchBlob;
 
 const activeDownloads = {};
@@ -92,8 +93,7 @@ module.exports = {
             const tmpFile = toFile + '.tmp';
             // create an active download for this file
             activeDownloads[toFile] = ensurePath(toFile)
-                .then(() => RNFetchBlob
-                    .config({
+                .then(() => config({
                         path: tmpFile
                     })
                     .fetch('GET', fromUrl, headers)
@@ -107,7 +107,7 @@ module.exports = {
                             return Promise.reject();
                         }
 
-                        return RNFetchBlob.fs.stat(tmpFile)
+                        return fs.stat(tmpFile)
                             .then(fileStats => {
                                 // Verify if the content was fully downloaded!
                                 if (res.respInfo.headers['Content-Length'] && res.respInfo.headers['Content-Length'] != fileStats.size) {
