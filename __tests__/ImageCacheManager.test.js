@@ -4,8 +4,8 @@ jest.mock('rn-fetch-blob', () => ({default: {fs: {}}}));
 jest.mock('react-native-clcasher/MemoryCache', () => ({default: {}}));
 
 import ImageCacheManager from '../ImageCacheManager';
-import SimpleMemoryCache from './SimpleMemoryCache';
-import SimpleMemoryFs from './SimpleMemoryFs';
+import SimpleMemoryCache from '../JestUtils/SimpleMemoryCache';
+import SimpleMemoryFs from '../JestUtils/SimpleMemoryFs';
 
 const icm = ImageCacheManager({}, SimpleMemoryCache, SimpleMemoryFs);
 
